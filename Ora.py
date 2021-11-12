@@ -117,10 +117,25 @@ def elágaások():
         print("Páratlan")
     number1=3
     number2=9
-    if number1%number2==0:
-        print("Az első szám osztható a másodikkal")
+    if number1 % number2 == 0:
+        print("Az egyik szám osztható a másikkal")
+    elif number2 % number1 == 0:
+        print("A másik szám osztható az elsővel.")
     else:
-        print("A két szám nem osztható maradék nélkül")
+        print("A számok nem oszthatóak.")
+    radar="radar2"
+    if radar[0] == radar[-1]:
+        print("Az első és az utolsó betű megegyezik")
+    else:
+        print("Az első és az utolsó betű különböző")
+    a=input()
+    if a>0:
+        print("A szám pozitív")
+    elif a<0:
+        print("A szám negatív")
+    else
+        print("A sám 0")
+
 def main():
     #hello()
     #alma()
@@ -129,6 +144,6 @@ def main():
     #kör()
     #speciális_karakterek()
     #String()
-    #elágazások
+    elágazások
 
 main()
