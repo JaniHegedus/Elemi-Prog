@@ -105,7 +105,7 @@ def String():
     print(str2.isalpha())
     print(str2.isalnum())
 
-def elágaások():
+def elágazások():
     number=35
     if number >100:
         print("A szám nagyobb mint száz!")
@@ -134,7 +134,7 @@ def elágaások():
     elif a<0:
         print("A szám negatív")
     else
-        print("A sám 0")
+        print("A szám 0")
 
 def main():
     #hello()
@@ -144,6 +144,6 @@ def main():
     #kör()
     #speciális_karakterek()
     #String()
-    elágazások
+    elágazások()
 
 main()
