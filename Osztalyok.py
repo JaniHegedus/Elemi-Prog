@@ -1,4 +1,3 @@
-from turtle import Turtle
 '''
 class metódusok
 (s: self, o: más)
@@ -113,9 +112,7 @@ class osbol_szarmaztatott(os):
     def print_nev(self):
         print("Te", self.nev, "vagy.")
     def os_meghivasa(self): os.print_nev(self)
-def Turtle():
-    Eszti = Turtle()  # Teknőc objektumok példányosítása
-    Sanyi = Turtle()
+
 def pont_kiiras(pt):
     print("({0}, {1})".format(pt.x, pt.y))
 def üresosztály():
@@ -184,8 +181,10 @@ def peldamegoldas():
 
     orokolt.os_meghivasa()
 
+
 #Alapvaltozok()
 #Sajátváltozók()
 #Adatattributumok()
 #üresosztály()
 #peldamegoldas()
+saját()
