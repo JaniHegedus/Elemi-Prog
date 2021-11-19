@@ -184,10 +184,8 @@ def peldamegoldas():
 
     orokolt.os_meghivasa()
 
-def main():
-    #Alapvaltozok()
-    #Sajátváltozók()
-    #Adatattributumok()
-    #üresosztály()
-    #peldamegoldas()
-main()
+#Alapvaltozok()
+#Sajátváltozók()
+#Adatattributumok()
+#üresosztály()
+#peldamegoldas()
