@@ -133,7 +133,7 @@ def elágazások():
         print("A szám pozitív")
     elif a<0:
         print("A szám negatív")
-    else
+    else:
         print("A szám 0")
 
 def main():
@@ -144,6 +144,6 @@ def main():
     #kör()
     #speciális_karakterek()
     #String()
-    elágazások()
+    #elágazások()
 
 main()
