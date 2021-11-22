@@ -142,6 +142,7 @@ def Calculate():
 
     Menu5_4 = Label(root, text=Válasz).grid(row=6, column=3)
     return
+
 def Menu01():
     Kattintas0 = Label(root,
                        text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
