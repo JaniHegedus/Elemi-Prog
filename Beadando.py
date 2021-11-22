@@ -1,6 +1,6 @@
 from tkinter import *
 import tkinter as tk
-root =Tk()
+root = Tk()
 root.title("Freddys Fazbear Pizza")
 x=30
 y=10
