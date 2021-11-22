@@ -112,29 +112,31 @@ def Calculate():
     entry1=Menu5_2.get()
     entry2=Menu5_3.get()
     Ár=0
-    if entry0.lower()=="pizza":
-        Ár+=950
-    if entry1.lower()=="sültkrumpli":
+    if entry0.lower() ==Menü().foetel("pizza"):
+        Ár += 950
+    #if entry0.lower()=="pizza":
+        #Ár+=950
+    if entry1.lower()==Menü().koret("sültkrumpli"):
         Ár+=150
-    if entry2.lower()=="kóla":
+    if entry2.lower()==Menü().ital("kóla"):
         Ár+=100
-    if entry0.lower()=="calzone":
+    if entry0.lower()==Menü().foetel("calzone"):
         Ár+=950
-    if entry1.lower()=="rízs":
+    if entry1.lower()==Menü().koret("rízs"):
         Ár+=100
-    if entry2.lower()=="sprite":
+    if entry2.lower()==Menü().ital("sprite"):
         Ár+=120
-    if entry0.lower()=="gyros":
+    if entry0.lower()==Menü().foetel("gyros"):
         Ár+=1000
-    if entry1.lower()=="krumplipüré":
+    if entry1.lower()==Menü().koret("krumplipüré"):
         Ár+=150
-    if entry2.lower()=="tea":
+    if entry2.lower()==Menü().ital("tea"):
         Ár+=90
-    if entry0.lower()=="hamburger":
+    if entry0.lower()==Menü().foetel("hamburger"):
         Ár+=650
-    if entry1.lower()=="krokett":
+    if entry1.lower()==Menü().koret("krokett"):
         Ár+=200
-    if entry2.lower()=="fanta":
+    if entry2.lower()==Menü().ital("fanta"):
         Ár+=110
     Válasz=("Rendelés: "+entry0+" "+entry1+" "+entry2+"\n Ár: "+str(Ár)+"Ft")
 
