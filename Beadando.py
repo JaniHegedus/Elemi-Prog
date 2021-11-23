@@ -12,20 +12,15 @@ class Étterem():
     def print_nev(self):
         print("Az étterem neve: {0}" .format(self.nev))
 
-
 class Menü(Étterem):
     def __init__(self, nev= "Freddy"):
         self.nev = nev
-        self.pizza="Pizzája"
-        self.hambi="Hamburgere"
-        self.calzone="Calzonéja"
-        self.gyros="Gyros-a"
     def foetel(self, foetel):
         self.foetel=foetel
         if foetel==1:
             self.foetel="pizza"
         if foetel==2:
-            self.foetel="calzone"
+            self.foetel="rántotthús"
         if foetel==3:
             self.foetel="gyros"
         if foetel==4:
@@ -34,11 +29,11 @@ class Menü(Étterem):
     def koret(self, koret):
         self.koret=koret
         if koret==1:
-            self.foetel="sültkrumpli"
+            self.koret="sültkrumpli"
         if koret==2:
-            self.foetel="rízs"
+            self.koret="rízs"
         if koret==3:
-            self.foetel="krumplipüré"
+            self.koret="krumplipüré"
         if koret==4:
             self.koret="krokett"
         return self.koret
@@ -46,29 +41,47 @@ class Menü(Étterem):
         self.ital=ital
         if ital == 1:
             self.ital = "kóla"
-        if ital == 1:
+        if ital == 2:
             self.ital = "sprite"
-        if ital == 1:
+        if ital == 3:
             self.ital = "tea"
-        if ital == 1:
+        if ital == 4:
             self.ital = "fanta"
 
         return self.ital
+    def ar(self, ar):
+        self.ar=ar
+        if ar == 1:
+            self.ar = "1200Ft"
+        if ar == 2:
+            self.ar = "1400Ft"
+        if ar == 3:
+            self.ar = "1500Ft"
+        if ar == 4:
+            self.ar = "1600Ft"
+
+        return self.ar
     def print_nev(self):
         print("A menü: ", self.nev, "!")
     def Menu_1(self):
-        print("Az első menü: ", self.nev, self.pizza,"!")
-        return self.nev,self.pizza
+        print("Az első menü: ", self.nev, Menü().foetel(1),"!")
+        return  Menü().foetel(1),Menü().koret(1),Menü().ital(1),Menü().ar(1)
     def Menu_2(self):
-        print("Az Második menü: ", self.nev, self.hambi, "!")
-        return self.nev,self.hambi
+        print("Az Második menü: ", self.nev, Menü().foetel(2), "!")
+        return Menü().foetel(2),Menü().koret(2),Menü().ital(2),Menü().ar(2)
     def Menu_3(self):
-        print("Az Harmadik menü: ", self.nev, self.calzone, "!")
-        return self.nev,self.calzone
+        print("Az Harmadik menü: ", self.nev, Menü().foetel(3), "!")
+        return Menü().foetel(3),Menü().koret(3),Menü().ital(3),Menü().ar(3)
     def Menu_4(self):
-        print("Az Negyedik menü: ", self.nev, self.gyros, "!")
-        return self.nev,self.gyros
-
+        print("Az Negyedik menü: ", self.nev, Menü().foetel(4), "!")
+        return Menü().foetel(4),Menü().koret(4),Menü().ital(4),Menü().ar(4)
+def sajatmenu():
+    sajatmenu.foetel=""
+    sajatmenu.koret=""
+    sajatmenu.ital=""
+    sajatmenu.ar=""
+def kiir():
+    return sajatmenu.foetel,sajatmenu.koret,sajatmenu.ital,sajatmenu.ar
 class Nyitvatartás(Étterem):
     def __init__(self, ido= "8-22", ido0= "10-20"):
         self.hetkoznap = ido
@@ -88,25 +101,34 @@ def kepernyo():
     entry0 = tk.StringVar()
     entry1 = tk.StringVar()
     entry2 = tk.StringVar()
+    a=1
+    Menu0 = Label(root, text="Menü:").grid(row=a,column=0)
+    a+=1
+    Menu1 = Label(root, text=Menü().foetel(1)).grid(row=a,column=0)
+    Menu1_1 = Label(root, text=Menü().koret(1)).grid(row=a,column=1)
+    Menu1_2 = Label(root, text=Menü().ital(1)).grid(row=a,column=2)
+    Menu1_3 = Label(root, text=Menü().ar(1)).grid(row=a,column=3)
+    a+=1
+    Menu2 = Label(root, text=Menü().foetel(2)).grid(row=a,column=0)
+    Menu2_1 = Label(root, text=Menü().koret(2)).grid(row=a,column=1)
+    Menu2_2 = Label(root, text=Menü().ital(2)).grid(row=a,column=2)
+    Menu2_3 = Label(root, text=Menü().ar(2)).grid(row=a,column=3)
+    a+=1
+    Menu3 = Label(root, text=Menü().foetel(3)).grid(row=a,column=0)
+    Menu3_1 = Label(root, text=Menü().koret(3)).grid(row=a,column=1)
+    Menu3_2 = Label(root, text=Menü().ital(3)).grid(row=a,column=2)
+    Menu3_3 = Label(root, text=Menü().ar(3)).grid(row=a,column=3)
+    a+=1
+    Menu4 = Label(root, text=Menü().foetel(4)).grid(row=a,column=0)
+    Menu4_1 = Label(root, text=Menü().koret(4)).grid(row=a,column=1)
+    Menu4_2 = Label(root, text=Menü().ital(4)).grid(row=a,column=2)
+    Menu4_3 = Label(root, text=Menü().ar(4)).grid(row=a,column=3)
+    a+=1
+    Menu5 = Label(root, text="Saját:").grid(row=a,column=0)
+    Menu5_4 = Button(root, text="Számít", padx=x, pady=y, command=Calculate, fg=Text_color, bg=Bg_color).grid(row=a,
+                                                                                                              column=4)
 
-    Menu0 = Label(root, text="Menü:").grid(row=1,column=0)
-    Menu1 = Label(root, text=Menü().Menu_1()).grid(row=2,column=0)
-    Menu1_1 = Label(root, text="Sültkrumpli").grid(row=2,column=1)
-    Menu1_2 = Label(root, text="Kóla").grid(row=2,column=2)
-    Menu1_3 = Label(root, text="1200Ft").grid(row=2,column=3)
-    Menu2 = Label(root, text=Menü().Menu_2()).grid(row=3,column=0)
-    Menu2_1 = Label(root, text="Sültkrumpli").grid(row=3,column=1)
-    Menu2_2 = Label(root, text="Kóla").grid(row=3,column=2)
-    Menu2_3 = Label(root, text="1400Ft").grid(row=3,column=3)
-    Menu3 = Label(root, text=Menü().Menu_3()).grid(row=4,column=0)
-    Menu3_1 = Label(root, text="Sültkrumpli").grid(row=4,column=1)
-    Menu3_2 = Label(root, text="Kóla").grid(row=4,column=2)
-    Menu3_3 = Label(root, text="1500Ft").grid(row=4,column=3)
-    #Menu4 = Label(root, text=Menü().Menu_4()).grid(row=5,column=0)
-    #Menu4_1 = Label(root, text="Sültkrumpli").grid(row=5,column=1)
-    #Menu4_2 = Label(root, text="Kóla").grid(row=5,column=2)
-    #Menu4_3 = Label(root, text="1600Ft").grid(row=5,column=3)
-    #Menu5 = Label(root, text="Saját:").grid(row=6,column=0)
+    a+=1
     global Menu5_1
     Menu5_1 = Entry(root)
     Menu5_1.grid(row=6, column=0)
@@ -120,12 +142,12 @@ def kepernyo():
     Menu5_3 = Entry(root)
     Menu5_3.grid(row=6, column=2)
     Menu5_3.insert(0,"Innivaló")
-    Menu5_4 = Button(root, text="Számít", padx=x, pady=y, command=Calculate, fg=Text_color,bg=Bg_color).grid(row=6,column=4)
-    Menu_1_Button=Button(root, text="1. Menü", padx=x, pady=y, command=Menu01, fg=Text_color,bg=Bg_color).grid(row=7,column=0)
-    Menu_2_Button=Button(root, text="2. Menü", padx=x, pady=y, command=Menu02, fg=Text_color,bg=Bg_color).grid(row=7,column=1)
-    Menu_3_Button=Button(root, text="3. Menü", padx=x, pady=y, command=Menu03, fg=Text_color,bg=Bg_color).grid(row=7,column=2)
-    #Menu_4_Button=Button(root, text="4. Menü", padx=x, pady=y, command=Menu04, fg=Text_color,bg=Bg_color).grid(row=7,column=3)
-    Menu_5_Button = Button(root, text="Saját Menü", padx=x, pady=y, command=sajatmenu, fg=Text_color, bg=Bg_color).grid(row=7, column=3)
+    Menu_1_Button=Button(root, text="1. Menü", padx=x, pady=y, command=Menu01, fg=Text_color,bg=Bg_color).grid(row=a,column=0)
+    Menu_2_Button=Button(root, text="2. Menü", padx=x, pady=y, command=Menu02, fg=Text_color,bg=Bg_color).grid(row=a,column=1)
+    Menu_3_Button=Button(root, text="3. Menü", padx=x, pady=y, command=Menu03, fg=Text_color,bg=Bg_color).grid(row=a,column=2)
+    Menu_4_Button=Button(root, text="4. Menü", padx=x, pady=y, command=Menu04, fg=Text_color,bg=Bg_color).grid(row=a,column=3)
+    Menu_5_Button = Button(root, text="Saját Menü", padx=x, pady=y, command=sajatmenu, fg=Text_color, bg=Bg_color).grid(row=a, column=4)
+    a+=1
 
     Menu_6_Button = Button(root, text="Hétközbeni nyitvatartás", padx=x, pady=y, command=Menu05, fg=Text_color,bg=Bg_color).grid(row=8, column=1)
     Menu_7_Button = Button(root, text="Hétvégi nyitvatartás", padx=x, pady=y, command=Menu06, fg=Text_color,bg=Bg_color).grid(row=8, column=2)
@@ -136,6 +158,7 @@ def Calculate():
     entry0=Menu5_1.get()
     entry1=Menu5_2.get()
     entry2=Menu5_3.get()
+    global Ár
     Ár=0
     if entry0.lower() ==Menü().foetel(1):
         Ár += 950
@@ -188,8 +211,8 @@ def Menu01():
                        text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
         row=9, column=5)
 
-
     Kattintas0 = Label(root, text="Az első menüt választotta!").grid(row=9, columnspan=5)
+    print( Menü().Menu_1())
 def Menu02():
     Kattintas0 = Label(root,
                        text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
@@ -211,6 +234,7 @@ def Menu02():
         row=9, column=5)
 
 
+    print( Menü().Menu_2())
     Kattintas0 = Label(root, text="A második menüt választotta!").grid(row=9, columnspan=5)
 def Menu03():
     Kattintas0 = Label(root,
@@ -233,6 +257,7 @@ def Menu03():
         row=9, column=5)
 
 
+    print(Menü().Menu_3())
     Kattintas0 = Label(root, text="A harmadik menüt választotta!").grid(row=9, columnspan=5)
 def Menu04():
     Kattintas0 = Label(root,
@@ -255,6 +280,7 @@ def Menu04():
         row=9, column=5)
 
 
+    print(Menü().Menu_4())
     Kattintas0 = Label(root, text="A negyedik menüt választotta!").grid(row=9, columnspan=5)
 def Menu05():
     Kattintas0 = Label(root,
@@ -321,13 +347,13 @@ def sajatmenu():
 
     Válasz=""
     db=0
-    if Menu5_1.get()=="Főétel":
+    if Menu5_1.get().lower()=="főétel":
         Válasz += "Főétel"
         db+=1
-    if Menu5_2.get() == "Köret":
+    if Menu5_2.get().lower() == "köret":
         Válasz += " Köret"
         db+=1
-    if Menu5_3.get() == "Innivaló":
+    if Menu5_3.get().lower() == "innivaló":
         Válasz+=" Innivaló"
         db+=1
     if db>0:
@@ -335,17 +361,12 @@ def sajatmenu():
         db=0
     else:
         Kattintas0 = Label(root, text="A rendelés elfogadva").grid(row=9, columnspan=5)
-
-    print(Menü().foetel(Menu5_1.get()))
-    print(Menü().koret(Menu5_2.get()))
-    print(Menü().ital(Menu5_3.get()))
-def saját():
-    Étterem().print_nev()
-    Menü().Menu_1()
-    Menü().Menu_2()
-    Menü().Menu_3()
-    Menü().Menu_4()
-    Nyitvatartás().Hétköznap()
+    Calculate()
+    sajatmenu.foetel=Menu5_1.get()
+    sajatmenu.koret=Menu5_2.get()
+    sajatmenu.ital=Menu5_3.get()
+    sajatmenu.ar=str(Ár)+"Ft"
+    print(kiir())
 def Ételek_Italok():
     Kattintas0 = Label(root, text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(row=9, column=0)
     Kattintas0 = Label(root, text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(row=9, column=1)
