@@ -126,7 +126,7 @@ def kepernyo():
     a+=1
     Menu5 = Label(root, text="Saját:").grid(row=a,column=0)
     Menu5_4 = Button(root, text="Számít", padx=x, pady=y, command=Calculate, fg=Text_color, bg=Bg_color).grid(row=a,
-                                                                                                              column=4)
+                                                                                     column=4)
 
     a+=1
     global Menu5_1
@@ -193,44 +193,44 @@ def Calculate():
 
 def Menu01():
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=0)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=1)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=2)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=3)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=4)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=5)
 
     Kattintas0 = Label(root, text="Az első menüt választotta!").grid(row=9, columnspan=5)
     print( Menü().Menu_1())
 def Menu02():
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=0)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=1)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=2)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=3)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=4)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=5)
 
 
@@ -238,22 +238,22 @@ def Menu02():
     Kattintas0 = Label(root, text="A második menüt választotta!").grid(row=9, columnspan=5)
 def Menu03():
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=0)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=1)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=2)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=3)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=4)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=5)
 
 
@@ -261,22 +261,22 @@ def Menu03():
     Kattintas0 = Label(root, text="A harmadik menüt választotta!").grid(row=9, columnspan=5)
 def Menu04():
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=0)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=1)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=2)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=3)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=4)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=5)
 
 
@@ -284,65 +284,65 @@ def Menu04():
     Kattintas0 = Label(root, text="A negyedik menüt választotta!").grid(row=9, columnspan=5)
 def Menu05():
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=0)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=1)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=2)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=3)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=4)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=5)
 
     Kattintas0 = Label(root, text="A nyitvatartás hétköznap: {0}" .format(Nyitvatartás().Hétköznap())).grid(row=9, columnspan=5)
 def Menu06():
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=0)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=1)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=2)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=3)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=4)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=5)
 
 
     Kattintas0 = Label(root, text="A nyitvatartás hétvégén: {0}" .format(Nyitvatartás().Hétvége())).grid(row=9, columnspan=5)
 def sajatmenu():
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=0)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=1)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=2)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=3)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=4)
     Kattintas0 = Label(root,
-                       text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(
+                       text="                                                  \n                                                  \n                                                  \n                                                  ").grid(
         row=9, column=5)
 
     Válasz=""
@@ -368,12 +368,12 @@ def sajatmenu():
     sajatmenu.ar=str(Ár)+"Ft"
     print(kiir())
 def Ételek_Italok():
-    Kattintas0 = Label(root, text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(row=9, column=0)
-    Kattintas0 = Label(root, text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(row=9, column=1)
-    Kattintas0 = Label(root, text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(row=9, column=2)
-    Kattintas0 = Label(root, text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(row=9, column=3)
-    Kattintas0 = Label(root, text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(row=9, column=4)
-    Kattintas0 = Label(root, text="                                                                           \n                                                                           \n                                                                           \n                                                                           ").grid(row=9, column=5)
+    Kattintas0 = Label(root, text="                                                  \n                                                  \n                                                  \n                                                  ").grid(row=9, column=0)
+    Kattintas0 = Label(root, text="                                                  \n                                                  \n                                                  \n                                                  ").grid(row=9, column=1)
+    Kattintas0 = Label(root, text="                                                  \n                                                  \n                                                  \n                                                  ").grid(row=9, column=2)
+    Kattintas0 = Label(root, text="                                                  \n                                                  \n                                                  \n                                                  ").grid(row=9, column=3)
+    Kattintas0 = Label(root, text="                                                  \n                                                  \n                                                  \n                                                  ").grid(row=9, column=4)
+    Kattintas0 = Label(root, text="                                                  \n                                                  \n                                                  \n                                                  ").grid(row=9, column=5)
     Kattintas1 = Label(root, text="Pizza\n Calzone,\n Gyros \n Hamburger").grid(row=9 ,column=0)
     Kattintas1 = Label(root, text="Sültkrumpli\n Krumplipüré,\n Rízs \n Krokett").grid(row=9,column=1)
     Kattintas1 = Label(root, text="Kóla\n Fanta,\n Sprite \n Tea").grid(row=9,column=2)
