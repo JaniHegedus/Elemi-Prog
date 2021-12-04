@@ -1,39 +1,83 @@
+from datetime import datetime
 from tkinter import *
+from enum import Enum
 import tkinter as tk
+import configparser
 import io
 import os
-from enum import Enum
-
+config = configparser.ConfigParser()
+config.sections()
+config.read('config.ini')
+config.sections()
 
 root = Tk()
-root.title("Ételkiszállítás")
-for o in range(10):
-    root.columnconfigure(o, minsize=25)
-root.overrideredirect(True)
-root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 
+"""
+ts=25
+x=40
+y=10
+text_type="Arial"
+Text_color="blue"
+Bg_color="white"
+txt_file="Rendelés.txt"
+input_file="Ettermek.txt"
+input_file0="Prices.txt"
+input_file1="Nyitvatartas.txt"
+"""
+matrix=[]
+matrix0=[]
+matrix1=[]
 Ettermek=[]
 Foetelek=[]
 Koretek=[]
 Italok=[]
 AR=[]
+ARAK=[]
+fullscreen=False
 
-ts=25
-x=40
-y=10
+txt_file=config['my_files']['txt_file']
+input_file=config['my_files']['input_file']
+input_file0=config['my_files']['input_file0']
+input_file1=config['my_files']['input_file1']
+text_type=config['Text']['text_type']
+Text_color=config['Text']['Text_color']
+Important_text_color=config['Text']['Important_text_color']
+Bg_color=config['Text']['Bg_color']
+ts=config['other']['Text_size']
+x=config['other']['Buttonsize_x']
+y=config['other']['Buttonsize_y']
+fullscreen=config['other']['Fullscreen']
 
-txt_file="Rendelés.txt"
-text_type="Arial"
+root.title("Ételkiszállítás")
+for o in range(10):
+    root.columnconfigure(o, minsize=25)
+root.overrideredirect(fullscreen)
+if fullscreen:
+    root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
+else:
+    root.geometry("1920x740")
 
-matrix=[]
-with io.open("Ettermek.txt", "r", encoding="utf-8") as fbee:
+with io.open(input_file, "r", encoding="utf-8") as fbee:
     for sor in fbee:
         kis_lista=[]
         sor=sor.strip().split()
         for elem in sor:
             kis_lista.append(elem)
         matrix.append(kis_lista)
-    print(matrix)
+with io.open(input_file0, "r", encoding="utf-8") as fbeee:
+    for sor in fbeee:
+        kis_lista=[]
+        sor=sor.strip().split()
+        for elem in sor:
+            kis_lista.append(elem)
+        matrix0.append(kis_lista)
+with io.open(input_file1, "r", encoding="utf-8") as fbeeee:
+    for sor in fbeeee:
+        kis_lista=[]
+        sor=sor.strip().split()
+        for elem in sor:
+            kis_lista.append(elem)
+        matrix1.append(kis_lista)
 
 for j in range(len(matrix)):
     kis_lista=[]
@@ -78,28 +122,31 @@ for k in range(len(matrix)):
             Italok.append(kis_lista1)
         if kis_lista2:
             AR.append(kis_lista2)
-
-#print(Ettermek)
-#print(Foetelek)
-#print(Koretek)
-#print(Italok)
-#print(AR)
-
-Text_color="blue"
-Bg_color="white"
+"""  ***DEBUG***
+print(matrix)
+print(matrix0)
+print(matrix1)
+print(Ettermek)
+print(Foetelek)
+print(Koretek)
+print(Italok)
+print(AR)
+"""
 global b
 b = 1
+global rendelt
+rendelt=1
 
 
 class Étterem():
     def __init__(self, et=" "):
         self.et = et
     def nev(self, et):
-        """
+
         self.et=""
-        self.et += Ettermek[i][0]
+        self.et += Ettermek[et-1][0]
         self.et += " "
-        self.et += Ettermek[i][1]
+        self.et += Ettermek[et-1][1]
         """
         if et==1:
             self.et+=Ettermek[0][0]
@@ -117,14 +164,11 @@ class Étterem():
             self.et+=Ettermek[3][0]
             self.et+=" "
             self.et+=Ettermek[3][1]
+        """
         return self.et
 class Menü(Étterem):
-    def __init__(self, nev="Freddy"):
-        self.nev = nev
-
-    def __init__(self, et=1):
+    def __init__(self, et=""):
         self.et = et
-
     def foetel(self, et, foetel):
         self.foetel = foetel
         et-=1
@@ -205,7 +249,56 @@ class Menü(Étterem):
 
     def Menu_4(self):
         return Menü().foetel(b, 4) + " " + Menü().koret(b, 4) + " " + Menü().ital(b, 4)+ " " + Menü().ar(b, 4)
+class Nyitvatartás(Étterem):
+    def __init__(self,nyitashk =8 ,nyitashv =10,zarashk =22,zarashv =20,nyitva=False):
+        self.nyitva=nyitva
+        self.nyitashk =nyitashk
+        self.nyitashv =nyitashv
+        self.zarashk =zarashk
+        self.zarashv =zarashv
+        self.hetkoznap = str(self.nyitashk)+"-"+str(self.zarashk)
+        self.hetvege = str(self.nyitashv)+"-"+str(self.zarashv)
+        self.nyitva = False
+    def Hétköznap(self):
+        #print("A nyitvatartás hétköznap: ", self.hetkoznap, "!")
+        return self.hetkoznap
+    def Hétvége(self):
+        #print("A nyitvatartás hétvégén: ", self.hetvege, "!")
+        return self.hetvege
+    """
+    def Nyitva(self, hetnapja, ora):
+        self.hetnapja = hetnapja
+        self.ora = ora
+        if self.hetnapja <= 4:
+            if self.ora>=self.zarashk and self.ora<=self.zarashk:
+                self.nyitva=True
+        else:
+            if self.ora>=self.nyitashv and self.ora<=self.nyitashv:
+                self.nyitva=True
+        return self.nyitva
+    """
+class Napok(Enum):
+   Hétfő=0
+   Kedd=1
+   Szerda=2
+   Csütörtök=3
+   Péntek=4
+   Szombat=5
+   Vasárnap=6
 
+def Mai_Nap()->str:
+    dt = int(datetime.today().weekday())
+    for i in range(7):
+        if i == dt:
+            return Napok(i).name
+def Nyitva(hetnapja, ora,nyitashk =8 ,nyitashv =10,zarashk =22,zarashv =20,nyitva=False):
+    if hetnapja <= 4:
+        if ora >= nyitashk and ora <= zarashk:
+            nyitva = True
+    else:
+        if ora >= nyitashv and ora <= zarashv:
+            nyitva = True
+    return nyitva
 
 def clear_screen():
     a = 2
@@ -268,32 +361,17 @@ def etlap_frissit():
     Menu4_3 = Label(root, text=Menü().ar(b, g) ,font=(text_type, ts)).grid(row=a, column=3)
     Kattintas0 = Label(root, text="                         ",font=(text_type, ts)).grid(row=0, column=2)
     Menu_0 = Label(root, text=Étterem().nev(b),font=(text_type, ts)).grid(row=0, column=2)
-
-
-with io.open(txt_file, "w", encoding="utf-8") as fki:
-    fki.write(Étterem().nev(b)+"\n")
-
-def sajatmenu():
-    sajatmenu.foetel=""
-    sajatmenu.koret=""
-    sajatmenu.ital=""
-    sajatmenu.ar=""
-
-
-class Nyitvatartás(Étterem):
-    def __init__(self, ido= "8-22", ido0= "10-20"):
-        self.hetkoznap = ido
-        self.hetvege = ido0
-    def Hétköznap(self):
-        #print("A nyitvatartás hétköznap: ", self.hetkoznap, "!")
-        return self.hetkoznap
-    def Hétvége(self):
-        #print("A nyitvatartás hétvégén: ", self.hetvege, "!")
-        return self.hetvege
+if rendelt>0:
+    with io.open(txt_file, "w", encoding="utf-8") as fki:
+        fki.write(Étterem().nev(b)+"\n")
+        rendelt=0
 
 def kepernyo():
     global c
-    #freddyspizza = Label(root, text="Freddys Fazbear Pizza").grid(row=0,column=0)
+    hetnapjaa = int(datetime.today().weekday())
+    oraa = int(datetime.now().strftime("%H"))
+    Mai_Nap()
+
     entry0 = tk.StringVar()
     entry1 = tk.StringVar()
     entry2 = tk.StringVar()
@@ -301,10 +379,11 @@ def kepernyo():
 
     Menu00_Button = Button(root, text="Fizetés", padx=x, pady=y, command=grandtotal, fg=Text_color, bg=Bg_color ,font=(text_type, ts)).grid(row=a,column=5)
 
-    Menu0_Button = Button(root, text="<", padx=x, pady=y, command=b_csokkento, fg=Text_color, bg=Bg_color ,font=(text_type, ts)).grid(row=a, column=0)
-    Menu_0 = Label(root, text=Étterem().nev(b),font=(text_type, ts)).grid(row=a, column=2)
-    Menu1_Button = Button(root, text=">", padx=x, pady=y, command=b_novelo, fg=Text_color, bg=Bg_color ,font=(text_type, ts)).grid(row=a, column=4)
+    Menu00_Button = Button(root, text="<", padx=x, pady=y, command=b_csokkento, fg=Text_color, bg=Bg_color ,font=(text_type, ts)).grid(row=a, column=0)
+    Menu00 = Label(root, text=Étterem().nev(b),font=(text_type, ts)).grid(row=a, column=2)
+    Menu00_Button = Button(root, text=">", padx=x, pady=y, command=b_novelo, fg=Text_color, bg=Bg_color ,font=(text_type, ts)).grid(row=a, column=4)
     a+=1
+    Menu0= Label(root, text="Mai nap:\n"+Mai_Nap(),font=(text_type, ts)).grid(row=a,column=5)
     Menu0 = Label(root, text="Menü:",font=(text_type, ts)).grid(row=a,column=0)
     a+=1
     g=1
@@ -312,6 +391,10 @@ def kepernyo():
     Menu1_1 = Label(root, text=Menü().koret(b,g) ,font=(text_type, ts)).grid(row=a,column=1)
     Menu1_2 = Label(root, text=Menü().ital(b,g) ,font=(text_type, ts)).grid(row=a,column=2)
     Menu1_3 = Label(root, text=Menü().ar(b,g) ,font=(text_type, ts)).grid(row=a,column=3)
+    if Nyitva(hetnapjaa, oraa):
+        Menu1_3 = Label(root, text="Nyitva", font=(text_type, ts), fg=Important_text_color).grid(row=a, column=5)
+    else:
+        Menu1_3 = Label(root, text="Zárva", font=(text_type, ts), fg=Important_text_color).grid(row=a, column=5)
     a+=1
     g+=1
     Menu2 = Label(root, text=Menü().foetel(b,g) ,font=(text_type, ts)).grid(row=a,column=0)
@@ -333,18 +416,17 @@ def kepernyo():
     a+=1
     Menu5 = Label(root, text="Saját:",font=(text_type, ts)).grid(row=a,column=0)
 
-
     a+=1
-    global Menu5_1
+
     Menu5_1 = Entry(root)
     Menu5_1.grid(row=a, column=0, padx=x, pady=y, ipady=y)
     Menu5_1.insert(0,"Fő étel")
     #entry0.set("Főétel")
-    global Menu5_2
+
     Menu5_2 = Entry(root)
     Menu5_2.grid(row=a, column=1, padx=x, pady=y, ipady=y)
     Menu5_2.insert(0,"Köret")
-    global Menu5_3
+
     Menu5_3 = Entry(root)
     Menu5_3.grid(row=a, column=2, padx=x, pady=y, ipady=y)
     Menu5_3.insert(0,"Innivaló")
@@ -363,22 +445,24 @@ def kepernyo():
     c=a
     a+=1
     Menu_8_Button = Button(root, text="Kilépés", padx=x, pady=y, command=root.quit, fg=Text_color,bg=Bg_color ,font=(text_type, ts)).grid(row=a, column=5)
-    Menu_8_Button = Button(root, text="Ételek, Italok", padx=x, pady=y, command=Ételek_Italok, fg=Text_color,bg=Bg_color ,font=(text_type, ts)).grid(row=a, column=0)
-    #myLabel.pack()
+    Menu_9_Button = Button(root, text="Ételek, Italok", padx=x, pady=y, command=Ételek_Italok, fg=Text_color,bg=Bg_color ,font=(text_type, ts)).grid(row=a, column=0)
 
 def b_csokkento():
     global b
+    global rendelt
     if b==1:
         b=4
     else:
         b=b-1
     clear_screen()
     etlap_frissit()
-
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
-        fki.write("\n"+Étterem().nev(b) + "\n")
+    if rendelt>0:
+        with io.open(txt_file, "a", encoding="utf-8") as fki:
+            fki.write("\n"+Étterem().nev(b) + "\n")
+        rendelt=0
 def b_novelo():
     global b
+    global rendelt
     if b==4:
         b=1
     else:
@@ -389,8 +473,10 @@ def b_novelo():
     Kattintas0 = Label(root, text="                         ",font=(text_type, ts)).grid(row=0, column=2)
     Menu_0 = Label(root, text=Étterem().nev(b) ,font=(text_type, ts)).grid(row=0, column=2)
     #print(b)
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
-        fki.write("\n"+Étterem().nev(b) + "\n")
+    if rendelt > 0:
+        with io.open(txt_file, "a", encoding="utf-8") as fki:
+            fki.write("\n"+Étterem().nev(b) + "\n")
+        rendelt=0
 
 def Calculate():
     entry0=Menu5_1.get()
@@ -427,52 +513,6 @@ def Calculate():
 
     Menu5_4 = Label(root, text=Válasz ,font=(text_type, ts)).grid(row=6, column=3)
     return
-
-def Menu01():
-    clear_screen_lower()
-    for sor in Menü().Menu_1():
-        with io.open(txt_file, "a", encoding="utf-8") as fki:
-            fki.write(sor)
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
-        fki.write("\n")
-    Kattintas0 = Label(root, text="Az első menüt választotta!" ,font=(text_type, ts)).grid(row=c, columnspan=5)
-    print(Menü().Menu_3())
-def Menu02():
-    clear_screen_lower()
-    print( Menü().Menu_2())
-    for sor in Menü().Menu_2():
-        with io.open(txt_file, "a", encoding="utf-8") as fki:
-            fki.write(sor )
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
-        fki.write("\n")
-    Kattintas0 = Label(root, text="A második menüt választotta!" ,font=(text_type, ts)).grid(row=c, columnspan=5)
-def Menu03():
-    clear_screen_lower()
-    for sor in Menü().Menu_3():
-        with io.open(txt_file, "a", encoding="utf-8") as fki:
-            fki.write(sor)
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
-        fki.write("\n")
-
-
-    print(Menü().Menu_3())
-    Kattintas0 = Label(root, text="A harmadik menüt választotta!" ,font=(text_type, ts)).grid(row=c, columnspan=5)
-def Menu04():
-    clear_screen_lower()
-    for sor in Menü().Menu_4():
-        with io.open(txt_file, "a", encoding="utf-8") as fki:
-            fki.write(sor)
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
-        fki.write("\n")
-    print(Menü().Menu_4())
-    Kattintas0 = Label(root, text="A negyedik menüt választotta!" ,font=(text_type, ts)).grid(row=c, columnspan=5)
-def Menu05():
-    clear_screen_lower()
-    Kattintas0 = Label(root, text="A nyitvatartás hétköznap: {0}" .format(Nyitvatartás().Hétköznap()) ,font=(text_type, ts)).grid(row=c, columnspan=5)
-def Menu06():
-    clear_screen_lower()
-    Kattintas0 = Label(root, text="A nyitvatartás hétvégén: {0}" .format(Nyitvatartás().Hétvége()) ,font=(text_type, ts)).grid(row=c, columnspan=5)
-
 def sajatmenu():
     global c
     clear_screen_lower()
@@ -513,9 +553,65 @@ def kiir():
     #fki.write()
     return sajatmenu.foetel, sajatmenu.koret, sajatmenu.ital, sajatmenu.ar
 
+def Menu01():
+    global rendelt
+    rendelt+=1
+    clear_screen_lower()
+    for sor in Menü().Menu_1():
+        with io.open(txt_file, "a", encoding="utf-8") as fki:
+            fki.write(sor)
+    with io.open(txt_file, "a", encoding="utf-8") as fki:
+        fki.write("\n")
+    Kattintas0 = Label(root, text="Az első menüt választotta!" ,font=(text_type, ts)).grid(row=c, columnspan=5)
+    print(Menü().Menu_3())
+def Menu02():
+    global rendelt
+    rendelt+=1
+    clear_screen_lower()
+    print( Menü().Menu_2())
+    for sor in Menü().Menu_2():
+        with io.open(txt_file, "a", encoding="utf-8") as fki:
+            fki.write(sor )
+    with io.open(txt_file, "a", encoding="utf-8") as fki:
+        fki.write("\n")
+    Kattintas0 = Label(root, text="A második menüt választotta!" ,font=(text_type, ts)).grid(row=c, columnspan=5)
+def Menu03():
+    global rendelt
+    rendelt+=1
+    clear_screen_lower()
+    for sor in Menü().Menu_3():
+        with io.open(txt_file, "a", encoding="utf-8") as fki:
+            fki.write(sor)
+    with io.open(txt_file, "a", encoding="utf-8") as fki:
+        fki.write("\n")
+
+
+    print(Menü().Menu_3())
+    Kattintas0 = Label(root, text="A harmadik menüt választotta!" ,font=(text_type, ts)).grid(row=c, columnspan=5)
+def Menu04():
+    global rendelt
+    rendelt+=1
+    clear_screen_lower()
+    for sor in Menü().Menu_4():
+        with io.open(txt_file, "a", encoding="utf-8") as fki:
+            fki.write(sor)
+    with io.open(txt_file, "a", encoding="utf-8") as fki:
+        fki.write("\n")
+    print(Menü().Menu_4())
+    Kattintas0 = Label(root, text="A negyedik menüt választotta!" ,font=(text_type, ts)).grid(row=c, columnspan=5)
+
+def Menu05():
+    clear_screen_lower()
+    Kattintas0 = Label(root, text="A nyitvatartás hétköznap: {0}" .format(Nyitvatartás().Hétköznap()) ,font=(text_type, ts)).grid(row=c, columnspan=5)
+def Menu06():
+    clear_screen_lower()
+    Kattintas0 = Label(root, text="A nyitvatartás hétvégén: {0}" .format(Nyitvatartás().Hétvége()) ,font=(text_type, ts)).grid(row=c, columnspan=5)
+
 def Ételek_Italok():
     global c
+    c=12
     global b
+    b-=1
     clear_screen_lower()
     foetelek=""
     koretek=""
@@ -572,6 +668,6 @@ def Megrendelem():
     os.startfile(txt_file)
     root.quit()
 
+
 kepernyo()
 root.mainloop()
-
